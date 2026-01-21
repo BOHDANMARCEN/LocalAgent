@@ -372,13 +372,11 @@ def dispatch_command(command_name: str, params: Dict[str, Any]) -> None:
     LOGGER.info(f"Executing command: '{command_name}' with params: {params}")
 
     try:
-        # Inspect the function signature to pass only the parameters it accepts
-        sig = inspect.signature(action)
-        valid_params = {p.name for p in sig.parameters.values()}
-        filtered_params = {k: v for k, v in params.items() if k in valid_params}
-
-        action(**filtered_params)
+        action(**params)
         LOGGER.info(f"Successfully executed command: '{command_name}'")
+    except TypeError as e:
+        LOGGER.error(f"Mismatched parameters for command '{command_name}'. "
+                     f"Provided: {list(params.keys())}. Error: {e}", exc_info=True)
     except Exception as e:
         LOGGER.error(f"Error executing command '{command_name}': {e}", exc_info=True)
 

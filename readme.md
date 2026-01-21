@@ -51,7 +51,7 @@ The agent periodically polls `gpt_command.json`. When a valid command is found, 
 
 1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/your-username/LocalAgent.git
+    git clone https://github.com/BOHDANMARCEN/LocalAgent
     cd LocalAgent
     ```
 
@@ -71,7 +71,7 @@ Run the agent from your terminal:
 python agent.py
 ```
 
-The agent will start, create `gpt_command.json` and `agent.log` if they don't exist, and begin watching the command file.
+The agent will start, create `gpt_command.json` and `agent.log` if they don't exist, and begin watching the command file. The `run_agent.bat` script is also available for a quick launch.
 
 ### Customizing the Poll Interval
 
@@ -133,68 +133,79 @@ The following commands are currently implemented.
 
 ### `message`
 Logs a message from the AI.
-```json
-{
-  "command": "message",
-  "params": {
-    "text": "Hello, this is a test message."
-  }
-}
-```
+- **Params**: `{"text": "your message"}`
 
 ### `open_app`
 Launches an application.
-```json
-{
-  "command": "open_app",
-  "params": {
-    "path": "notepad.exe"
-  }
-}
-```
+- **Params**: `{"path": "path_to_app.exe"}`
 
 ### `run_powershell_script`
-Executes a PowerShell script string. This is useful for running more complex system commands.
-```json
-{
-  "command": "run_powershell_script",
-  "params": {
-    "script": "Get-Process | Sort-Object CPU -Descending | Select-Object -First 5"
-  }
-}
-```
+Executes a PowerShell script string.
+- **Params**: `{"script": "Get-Process"}`
 
 ### `system_check`
-Logs a summary of the system's OS, CPU, memory, and disk information.
-```json
-{
-  "command": "system_check"
-}
-```
+Logs a summary of system information (OS, CPU, memory, disk).
+- **Params**: None
 
 ### `delete_file`
-Deletes a file. **This command is dangerous.** To prevent accidental deletion, you **must** include `"confirm": true` in the parameters.
-```json
-{
-  "command": "delete_file",
-  "params": {
-    "path": "C:/path/to/your/file_to_delete.txt",
-    "confirm": true
-  }
-}
-```
-If `confirm` is not `true`, the agent will log a warning and skip the deletion.
+Deletes a file. **Requires confirmation.**
+- **Params**: `{"path": "/path/to/file", "confirm": true}`
 
 ### `kill_process_by_name`
-Terminates a running process by its executable name. It includes a denylist to prevent a user from killing critical system processes.
-```json
-{
-  "command": "kill_process_by_name",
-  "params": {
-    "name": "notepad.exe"
-  }
-}
-```
+Terminates a process by name.
+- **Params**: `{"name": "process_name.exe"}`
+
+### `create_file`
+Creates a new file, optionally with content.
+- **Params**: `{"path": "/path/to/file", "content": "initial content"}`
+
+### `create_folder`
+Creates a new directory.
+- **Params**: `{"path": "/path/to/folder"}`
+
+### `move_file`
+Moves or renames a file.
+- **Params**: `{"from_path": "/src", "to_path": "/dest"}`
+
+### `copy_file`
+Copies a file.
+- **Params**: `{"from_path": "/src", "to_path": "/dest"}`
+
+### `rename_file`
+Renames a file.
+- **Params**: `{"path": "/path/to/file", "new_name": "new_name.txt"}`
+
+### `list_dir`
+Logs the contents of a directory.
+- **Params**: `{"path": "/path/to/dir"}`
+
+### `read_file`
+Logs the content of a file.
+- **Params**: `{"path": "/path/to/file"}`
+
+### `write_file`
+Writes content to a file, overwriting existing content.
+- **Params**: `{"path": "/path/to/file", "content": "new content"}`
+
+### `append_file`
+Appends content to the end of a file.
+- **Params**: `{"path": "/path/to/file", "content": "appended content"}`
+
+### `run_instrukey`
+Runs an InstruKey executable.
+- **Params**: `{"path": "C:/Tools/InstruKey/InstruKey.exe"}`
+
+### `scan_defender`
+Starts a Windows Defender scan on a file or folder.
+- **Params**: `{"path": "C:/path/to/scan"}`
+
+### `list_processes`
+Logs a list of all running processes.
+- **Params**: None
+
+### `start_process`
+Starts a new process.
+- **Params**: `{"path": "process.exe", "args": "--arg1"}`
 
 ---
 
