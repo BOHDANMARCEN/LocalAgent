@@ -12,13 +12,13 @@ All commands use the JSON format:
 ## Security Levels
 
 ### SAFE (executed without confirmation)
-- `message`, `open_app`, `list_dir`, `get_file_info`, `clipboard_get`, `system_check`, `get_mouse_position`, `get_active_window`, `find_file`, `get_ram_usage`, `get_cpu_usage`, `get_disk_space`, `list_drives`, `check_internet`, `get_ip`, `list_processes`, `git_status`, `json_read`.
+- `message`, `open_app`, `list_dir`, `get_file_info`, `clipboard_get`, `system_check`, `get_mouse_position`, `get_active_window`, `find_file`, `find_files`, `find_in_file`, `compare_files`, `count_words`, `get_file_hash`, `get_folder_size`, `get_ram_usage`, `get_cpu_usage`, `get_disk_space`, `list_drives`, `check_internet`, `get_ip`, `list_processes`, `git_status`, `json_read`.
 
 ### MEDIUM (with logging)
-- `create_file`, `move_file`, `type_text`, `screenshot`, `read_file`, `write_file`, `append_file`, `replace_in_file`, `create_folder`, `copy_file`, `rename_file`, `mouse_move`, `mouse_click`, `press_key`, `hotkey`, `wait`, `ping`, `set_volume`, `mute`, `unmute`, `git_pull`, `git_commit`, `json_write`, `sqlite_query`.
+- `create_file`, `move_file`, `type_text`, `screenshot`, `read_file`, `write_file`, `append_file`, `replace_in_file`, `insert_line`, `delete_line`, `create_folder`, `copy_file`, `rename_file`, `mouse_move`, `mouse_click`, `press_key`, `hotkey`, `wait`, `ping`, `set_volume`, `mute`, `unmute`, `git_pull`, `git_commit`, `json_write`, `sqlite_query`.
 
 ### DANGEROUS (with mandatory confirmation)
-- `delete_file`, `kill_process`, `shutdown_pc`, `restart_pc`, `sleep_pc`, `lock_screen`, `download_file`, `encrypt_file`, `decrypt_file`, `run_script`, `start_process`, `restart_app`, `set_priority`, `git_push`, `schedule_command`, `registry_write`, `registry_delete`, `create_scheduled_task`, `delete_scheduled_task`.
+- `delete_file`, `kill_process`, `shutdown_pc`, `restart_pc`, `sleep_pc`, `lock_screen`, `download_file`, `encrypt_file`, `decrypt_file`, `run_script`, `start_process`, `restart_app`, `set_priority`, `git_push`, `schedule_command`, `sync_folders`, `registry_write`, `registry_delete`, `create_scheduled_task`, `delete_scheduled_task`.
 
 ### CRITICAL (with double confirmation and logging)
 - `delete_folder`, `format_drive`, `set_env_var`, `docker_stop`, `docker_remove`.
