@@ -1,0 +1,52 @@
+{
+  "macros": [
+    {
+      "name": "backup_project",
+      "steps": [
+        {
+          "command": "create_folder",
+          "params": {
+            "path": "D:/Backups/ProjectX"
+          }
+        },
+        {
+          "command": "copy_file",
+          "params": {
+            "from": "D:/Projects/ProjectX",
+            "to": "D:/Backups/ProjectX"
+          }
+        },
+        {
+          "command": "zip_files",
+          "params": {
+            "path": "D:/Backups/ProjectX",
+            "output": "project_backup.zip"
+          }
+        },
+        {
+          "command": "message",
+          "params": {
+            "text": "✅ Backup completed!"
+          }
+        }
+      ]
+    },
+    {
+      "name": "system_diagnostics",
+      "steps": [
+        {
+          "command": "system_check",
+          "params": {}
+        },
+        {
+          "command": "get_ram_usage",
+          "params": {}
+        },
+        {
+          "command": "get_cpu_usage",
+          "params": {}
+        }
+      ]
+    }
+  ]
+}
